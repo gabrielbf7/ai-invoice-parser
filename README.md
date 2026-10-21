@@ -88,6 +88,8 @@ Estimated API cost: US$ 0.0032
 Excel saved to: output\invoices_20261021_161129.xlsx
 ```
 
+**Result: 3/3 valid documents extracted correctly; 4/4 inconsistent documents correctly flagged for review.**
+
 | File | Tests | Result |
 |---|---|---|
 | `fictional_01_bluepine_usd.pdf` | digital PDF, USD, discount + sales tax | OK (3,150.00 − 315.00 + 226.80 = 3,061.80) |
@@ -97,6 +99,14 @@ Excel saved to: output\invoices_20261021_161129.xlsx
 | `Template12_Instance104.jpg` | discount, EUR | Review: subtotal − discount + tax = 778.39 ≠ total 790.46 |
 | `Template25_Instance33.jpg` | 5 GST lines | Review: subtotal − discount + tax = 185.04 ≠ total 182.79 |
 | `Template42_Instance150.jpg` | no subtotal, tax or total | Review: missing currency, missing total |
+
+Excel output (`Invoices`, `Line items` and `Needs review` sheets):
+
+![Invoices sheet](docs/excel_invoices.png)
+
+![Line items sheet](docs/excel_line_items.png)
+
+![Needs review sheet](docs/excel_needs_review.png)
 
 The four FATURA samples are expected to fail: the dataset is synthetic and its amounts do not always add up. They show that the validator catches inconsistent documents instead of passing them silently. The model copied the printed values; it did not "fix" them.
 
