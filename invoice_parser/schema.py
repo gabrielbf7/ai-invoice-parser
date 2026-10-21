@@ -46,6 +46,10 @@ INVOICE_SCHEMA = {
             "type": ["string", "null"],
             "description": "Issue date in ISO format YYYY-MM-DD.",
         },
+        "due_date": {
+            "type": ["string", "null"],
+            "description": "Payment due date in ISO format YYYY-MM-DD. Null if not shown.",
+        },
         "currency": {
             "type": ["string", "null"],
             "description": "ISO 4217 code (e.g. USD, EUR, BRL). Infer from symbol only if unambiguous.",
@@ -57,24 +61,30 @@ INVOICE_SCHEMA = {
         },
         "subtotal": {
             "type": ["number", "null"],
-            "description": "Total before tax. Null if not shown.",
+            "description": "Total before discount and tax. Null if not shown.",
+        },
+        "discount": {
+            "type": ["number", "null"],
+            "description": "Total discount as a positive number. Null if not shown.",
         },
         "tax": {
             "type": ["number", "null"],
-            "description": "Sum of all taxes (VAT, sales tax, etc.). Null if not shown.",
+            "description": "Sum of all taxes (VAT, sales tax, GST, etc.). Null if not shown.",
         },
         "total": {
             "type": ["number", "null"],
-            "description": "Final amount due, including tax.",
+            "description": "Final amount due, after discount and tax. Null if not shown.",
         },
     },
     "required": [
         "vendor_name",
         "invoice_number",
         "invoice_date",
+        "due_date",
         "currency",
         "line_items",
         "subtotal",
+        "discount",
         "tax",
         "total",
     ],
