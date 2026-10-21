@@ -1,0 +1,28 @@
+# Secrets
+.env
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated output
+output/
+*.xlsx
+
+# Real documents: never commit (only fictional samples allowed)
+*.pdf
+*.jpg
+*.jpeg
+*.png
+!samples/**/*.pdf
+!samples/**/*.jpg
+!samples/**/*.jpeg
+!samples/**/*.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
