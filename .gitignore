@@ -25,4 +25,4 @@ output/
 # OS / editor
 .DS_Store
 Thumbs.db
-.vscode/
+.vscode/.pytest_cache/
